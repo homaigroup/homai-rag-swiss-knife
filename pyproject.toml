@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "semantic-chunk-search"
+version = "4.0.0"
+description = "Hardened multilingual chunking and hybrid retrieval core with multi-representation search, ACL, persistence, observability and evaluation"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.optional-dependencies]
+neural = ["sentence-transformers>=3.0"]
+ann = ["hnswlib>=0.8"]
+reranker = ["sentence-transformers>=3.0"]
+tokenizers = ["transformers>=4.40", "tiktoken>=0.7"]
+sparse = ["sentence-transformers>=5.0"]
+qdrant = ["qdrant-client>=1.17"]
+documents = ["pypdf>=5", "python-docx>=1.1"]
+observability = ["opentelemetry-api>=1.27"]
+all = ["sentence-transformers>=5.0", "hnswlib>=0.8", "transformers>=4.40", "tiktoken>=0.7", "qdrant-client>=1.17", "pypdf>=5", "python-docx>=1.1", "opentelemetry-api>=1.27"]
+dev = ["pytest>=7", "build>=1"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["semantic_chunk_search*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+pythonpath = ["."]
